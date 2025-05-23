@@ -1,4 +1,4 @@
-# math-brain
+# MATH BRAIN
 math game using php, js, css, html
 
 
