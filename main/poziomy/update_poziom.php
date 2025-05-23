@@ -20,14 +20,14 @@ if (isset($_SESSION["nazwa"])) {
         
         $sqlUpdate = "UPDATE uzytkownik SET poziom = '$newLevel' WHERE nick = '$nick'";
         if (mysqli_query($conn, $sqlUpdate)) {
-            echo json_encode(['status' => 'success', 'message' => 'Poziom zwiększony', 'new_level' => $newLevel]);
+            echo json_encode(['status' => 'success', 'message' => 'dziala', 'new_level' => $newLevel]);
         } else {
-            echo json_encode(['status' => 'error', 'message' => 'Błąd przy aktualizacji: ' . mysqli_error($conn)]);
+            echo json_encode(['status' => 'error', 'message' => 'blad: ' . mysqli_error($conn)]);
         }
     } else {
         echo json_encode(['status' => 'error', 'message' => 'Nie znaleziono użytkownika']);
     }
 } else {
-    echo json_encode(['status' => 'error', 'message' => 'Brak aktywnej sesji użytkownika']);
+    echo json_encode(['status' => 'error', 'message' => 'brak sesji']);
 }
 ?>

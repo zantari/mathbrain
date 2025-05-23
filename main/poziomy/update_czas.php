@@ -9,14 +9,14 @@ error_reporting(E_ALL);
 $data = json_decode(file_get_contents("php://input"), true);
 
 if (!isset($data['czas'])) {
-    echo json_encode(['status' => 'error', 'message' => 'Brak przesłanego czasu']);
+    echo json_encode(['status' => 'error', 'message' => 'Brak czasu']);
     exit;
 }
 
 $czas = mysqli_real_escape_string($conn, $data['czas']); 
 
 if (!isset($_SESSION["nazwa"])) {
-    echo json_encode(['status' => 'error', 'message' => 'Brak aktywnej sesji użytkownika']);
+    echo json_encode(['status' => 'error', 'message' => 'Brak aktywnej sesji ']);
     exit;
 }
 
@@ -36,7 +36,7 @@ if ($result && mysqli_num_rows($result) > 0) {
     if (mysqli_query($conn, $sqlInsertCzas)) {
         echo json_encode(['status' => 'success', 'message' => 'Czas zapisany']);
     } else {
-        echo json_encode(['status' => 'error', 'message' => 'Błąd przy dodawaniu czasu: ' . mysqli_error($conn)]);
+        echo json_encode(['status' => 'error', 'message' => 'Błąd ' . mysqli_error($conn)]);
     }
 
 } else {

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sty 31, 2025 at 09:15 PM
+-- Generation Time: Maj 24, 2025 at 12:24 AM
 -- Wersja serwera: 10.4.32-MariaDB
--- Wersja PHP: 8.2.12
+-- Wersja PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- 
 --
 
 CREATE TABLE `czas` (
@@ -39,12 +38,13 @@ CREATE TABLE `czas` (
 --
 
 INSERT INTO `czas` (`id_czas`, `id_uzytkownik`, `id_poziom`, `czas`) VALUES
-(2, 18, 1, '00:00:42');
+(40, 15, 1, '00:00:06'),
+(41, 15, 2, '00:00:06');
 
 -- --------------------------------------------------------
 
 --
--- 
+-- Struktura tabeli dla tabeli `komentarz`
 --
 
 CREATE TABLE `komentarz` (
@@ -55,10 +55,29 @@ CREATE TABLE `komentarz` (
   `komentarz` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `komentarz`
+--
+
+INSERT INTO `komentarz` (`id_komentarz`, `id_uzytkownik`, `id_poziom`, `ocena`, `komentarz`) VALUES
+(1, 15, 1, 4, 'slaby poziom nie moge przejsc'),
+(2, 18, 1, 5, 'wow super poziom przeszlam w 2sekund'),
+(12, 1, 1, 2, 'Super poziom, mega mi sie podoba'),
+(22, 15, 2, 5, 'super poziom, troche ciężki, ale z pomocą ChatGPT dalem rade go przejsc! 💪💪'),
+(23, 18, 2, 5, 'fajny'),
+(24, 15, 3, 5, 'very nice level '),
+(25, 15, 4, 2, 'ciezkie'),
+(26, 15, 5, 5, 'proste'),
+(27, 15, 6, 5, 'latwe'),
+(28, 15, 7, 5, 'latwiutkie'),
+(29, 15, 8, 5, ''),
+(32, 18, 3, 5, 'nnmm'),
+(33, 15, 9, 4, 'proste'),
+(35, 28, 1, 4, 'mega');
+
 -- --------------------------------------------------------
 
 --
--- 
 --
 
 CREATE TABLE `poziom` (
@@ -66,21 +85,27 @@ CREATE TABLE `poziom` (
   `nazwa` varchar(100) NOT NULL,
   `opis` text NOT NULL,
   `trudnosc` int(11) NOT NULL,
-  `autor` int(11) NOT NULL
+  `id_autor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `poziom`
 --
 
-INSERT INTO `poziom` (`id_poziom`, `nazwa`, `opis`, `trudnosc`, `autor`) VALUES
+INSERT INTO `poziom` (`id_poziom`, `nazwa`, `opis`, `trudnosc`, `id_autor`) VALUES
 (1, 'dodawanie', 'pierwsze najlatwiejsze zadanie z dodawania', 1, 15),
-(2, 'Mnożenie', 'Proste zadanie z mnożenia', 1, 18);
+(2, 'Mnożenie', 'Proste zadanie z mnożenia', 1, 18),
+(3, '48:3', 'prosty poziom z dzieleniem', 0, 1),
+(4, '(3 + 5) × 2', 'Poziom z mnożeniem, średni poziom trudności.', 0, 1),
+(5, '2 + 3', 'Prosty poziom z dodawaniem.', 0, 15),
+(6, '7 × 6', 'Ćwiczenie mnożenia dla średniozaawansowanych.', 0, 18),
+(7, '15 ÷ 3', 'Podstawowe dzielenie liczb całkowitych.', 0, 15),
+(8, '(4 + 5) × 2', 'Działanie z nawiasami i mnożeniem.', 0, 1),
+(9, 'poziom 9', 'mega hard poziom', 4, 18);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `ranking`
 --
 
 CREATE TABLE `ranking` (
@@ -96,12 +121,12 @@ CREATE TABLE `ranking` (
 --
 
 INSERT INTO `ranking` (`id_ranking`, `id_uzytkownik`, `wygrane`, `przegrane`, `ranking`) VALUES
-(2, 15, 100, 0, 312);
+(2, 15, 100, 0, 312),
+(3, 18, 0, 1203, -400);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `uzytkownik`
 --
 
 CREATE TABLE `uzytkownik` (
@@ -111,25 +136,29 @@ CREATE TABLE `uzytkownik` (
   `haslo` varchar(255) NOT NULL,
   `ranking` int(11) DEFAULT 0,
   `rola` tinyint(1) NOT NULL DEFAULT 0,
-  `plec` tinyint(1) NOT NULL
+  `plec` tinyint(1) NOT NULL,
+  `poziom` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `uzytkownik`
 --
 
-INSERT INTO `uzytkownik` (`id_uzytkownik`, `nick`, `telefon`, `haslo`, `ranking`, `rola`, `plec`) VALUES
-(15, 'Robert Lewandowski', '1', '$2y$10$V6ezUbW3DmTTZ8Vpg7rwu.jTODr/AuGYZj7PpH.Ftc1LynDvge0ey', 313, 0, 0),
-(17, 'adsfsadfdsfdfsadafsasdasddasad', '1234', '$2y$10$PETQR9d10snc5JI.Reyt..fyk7sdgZexYWPDKpVB/kfUg/nlQnWe.', 0, 0, 0),
-(18, 'Ewa Swoboda', '2', '$2y$10$FRsdxJbBnUxW4RiOVYzl2e2EcLC2IGac/epSdyfDmhDTv0NWyK8Ui', 312321, 0, 1),
-(22, '1', '1231321123', '$2y$10$/1dT4/C7zSqFqAw8H83H3u1mGstrcr/0ni8XvXrkb1uVp91H7It3O', 0, 0, 0);
+INSERT INTO `uzytkownik` (`id_uzytkownik`, `nick`, `telefon`, `haslo`, `ranking`, `rola`, `plec`, `poziom`) VALUES
+(1, 'piotrek', '720767261', '$2y$10$OEWPx8EFc6Az4NXF9ifPyeeUdjqgQmtbpeJecfij42c/og4rfUdkS', 0, 1, 0, 1),
+(15, 'Robert Lewandowski', '1', '$2y$10$V6ezUbW3DmTTZ8Vpg7rwu.jTODr/AuGYZj7PpH.Ftc1LynDvge0ey', 313, 0, 0, 3),
+(18, 'Ewa Swoboda', '2', '$2y$10$FRsdxJbBnUxW4RiOVYzl2e2EcLC2IGac/epSdyfDmhDTv0NWyK8Ui', 312321, 0, 1, 1),
+(25, '9 zer', '000000000', '123', 0, 0, 1, 1),
+(27, 'testowekonto', '12', '123', 0, 0, 1, 1),
+(28, 'supertest', '123123123', '$2y$10$ScI.ITm.YypkMdJX0duruOfVe5QANJBzbuLZ52PJs2weJitteZzl6', 0, 0, 0, 1),
+(29, 'fftswedf', '344555553', '$2y$10$yYWatF1/uX2lWHYMr6Zlc.2TiRSgIKgZwgP2ZFB2cj1mzWf.taHOy', 0, 0, 1, 1),
+(30, 'aleks', '312312132', '$2y$10$TU3GFATfp897JKzyAmR2AOJn6/r9vzYaYuSKbemKfJDFdof0G/gYu', 0, 0, 0, 1);
 
 --
 -- Indeksy dla zrzutów tabel
 --
 
 --
--- Indeksy dla tabeli `czas`
 --
 ALTER TABLE `czas`
   ADD PRIMARY KEY (`id_czas`),
@@ -137,7 +166,6 @@ ALTER TABLE `czas`
   ADD KEY `id_poziom` (`id_poziom`);
 
 --
--- Indeksy dla tabeli `komentarz`
 --
 ALTER TABLE `komentarz`
   ADD PRIMARY KEY (`id_komentarz`),
@@ -145,14 +173,12 @@ ALTER TABLE `komentarz`
   ADD KEY `id_poziom` (`id_poziom`);
 
 --
--- Indeksy dla tabeli `poziom`
 --
 ALTER TABLE `poziom`
   ADD PRIMARY KEY (`id_poziom`),
-  ADD KEY `autor` (`autor`);
+  ADD KEY `autor` (`id_autor`);
 
 --
--- Indeksy dla tabeli `ranking`
 --
 ALTER TABLE `ranking`
   ADD PRIMARY KEY (`id_ranking`),
@@ -172,31 +198,31 @@ ALTER TABLE `uzytkownik`
 -- AUTO_INCREMENT for table `czas`
 --
 ALTER TABLE `czas`
-  MODIFY `id_czas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_czas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `komentarz`
 --
 ALTER TABLE `komentarz`
-  MODIFY `id_komentarz` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_komentarz` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `poziom`
 --
 ALTER TABLE `poziom`
-  MODIFY `id_poziom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_poziom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `ranking`
 --
 ALTER TABLE `ranking`
-  MODIFY `id_ranking` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_ranking` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `uzytkownik`
 --
 ALTER TABLE `uzytkownik`
-  MODIFY `id_uzytkownik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_uzytkownik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Constraints for dumped tables
@@ -220,7 +246,7 @@ ALTER TABLE `komentarz`
 -- Constraints for table `poziom`
 --
 ALTER TABLE `poziom`
-  ADD CONSTRAINT `poziom_ibfk_1` FOREIGN KEY (`autor`) REFERENCES `uzytkownik` (`id_uzytkownik`);
+  ADD CONSTRAINT `poziom_ibfk_1` FOREIGN KEY (`id_autor`) REFERENCES `uzytkownik` (`id_uzytkownik`);
 
 --
 -- Constraints for table `ranking`

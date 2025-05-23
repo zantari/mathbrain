@@ -33,7 +33,7 @@ function czasDoBazy(){
             window.location.href='../../index.php';
         }
         else{
-             console.error("Błąd ", data.message);
+             console.error("blad ", data.message);
             
         }
     })
@@ -65,14 +65,14 @@ function aktualizujPoziom() {
     .then(response => response.json())
     .then(data => {
         if (data.status === 'success') {
-            console.log("Poziom zaktualizowany!");
+            console.log("zaktualizowano");
             window.location.href = "../../index.php";
         } else {
-            console.error("Błąd przy aktualizacji poziomu:", data.message);
+            console.error("blad:", data.message);
         }
     })
     .catch(error => {
-        console.error("Błąd podczas wysyłania:", error);
+        console.error("blad wysylania:", error);
     });
 }
 
