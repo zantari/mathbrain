@@ -1,0 +1,124 @@
+body {
+    background-color: white;
+    overflow: auto;
+    font-family: 'Baloo';
+   color: #6ab1ff;
+}
+
+h1{
+    font-size: 400%;
+}
+
+#lewo {
+    position: absolute;
+    top: 78px;
+    width: 60%;
+    height: 100%;
+
+    text-align: center;
+
+}
+
+#lewologin{
+    text-align: left;
+    margin-left: 10%;
+    width: 60%;
+    
+}
+
+#lewologin p{
+   font-size: 200%;
+}
+
+#lewologin input, select{
+    width: 60%;
+    height: 30px;
+    border-radius: 20px;
+    background-color: #c4dffc;
+    border: none;
+    font-family: 'Baloo';
+    color: black;
+    font-size: 70%;
+}
+#lewologin input[type="button"]{
+    width: 30px;
+    height: 40px;
+    background-color: white;
+    cursor: pointer;
+    background-color: none;
+    background-image: url('../oko.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+#prawo {
+    text-align: center;
+    position: absolute;
+    top: 78px;
+    border-left: 1px solid black;
+    left: 60%;
+    width: 40%;
+    height: 100%;
+
+   
+
+}
+
+
+.error1, .error2, .error{
+    color: red;
+}
+
+#register{
+    background-color: #c4dffc;
+    border: none;
+    color: #6ab1ff;
+    font-family: 'Baloo';
+    float: right;
+    margin-top: -240px;
+    width: auto;
+    height: auto;
+    margin-right: 10%;
+    
+    font-size: 300%;
+    border-radius: 25px;
+    
+    cursor: pointer;
+   
+}
+#registerr{
+    background-color: #c4dffc;
+    border: none;
+    color: #6ab1ff;
+    font-family: 'Baloo';
+    float: right;
+    margin-top: -500px;
+    width: auto;
+    height: auto;
+    margin-right: 10%;
+    
+    font-size: 300%;
+    border-radius: 25px;
+    
+    cursor: pointer;
+   
+}
+
+#login, #BRAKONTA{
+    background-color: #c4dffc;
+    border: none;
+    color: #6ab1ff;
+    font-family: 'Baloo';
+     width: auto;
+    height: 80px;
+    font-size: 300%;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+#BRAKONTA{
+    
+    
+    height: auto;
+}
