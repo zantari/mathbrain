@@ -6,7 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-    <p>System rankingowy</p>
+    <p>ranked system - not ready yet</p>
+    <p id="dzialanie"></p>
+    <input type="text" id="odpowiedz">
+     
+    <button onclick="rownanie()">losuj</button>
+    <button onclick="sprawdz()">sprawdz</button>
+    <p id="czyDobrze"></p>
+
+    
+    <script src="skryptranked.js"></script>
     
 </body>
 </html>
