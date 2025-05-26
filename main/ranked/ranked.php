@@ -13,6 +13,8 @@
     <button onclick="rownanie()">losuj</button>
     <button onclick="sprawdz()">sprawdz</button>
     <p id="czyDobrze"></p>
+    <p id="timer">10</p>
+    <p id="twojePunkty">punkty: 0</p>
 
     
     <script src="skryptranked.js"></script>
