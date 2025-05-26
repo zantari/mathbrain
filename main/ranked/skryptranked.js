@@ -27,7 +27,7 @@ function rownanie() {
     //let iloscLiczb = Math.floor(Math.random() * 4) + 2;
 
 
-    let iloscLiczb = 2; //pozniej usunac
+    let iloscLiczb = 3; //pozniej usunac
 
 
 
@@ -88,6 +88,63 @@ function rownanie() {
 
         let losoweDzialanie1 = randomDzialanie();
         let losoweDzialanie2 = randomDzialanie();
+
+        //0
+
+        if(losoweDzialanie1 == 0 && losoweDzialanie2 == 0){
+            dzialanieHTML.textContent = pierwszaLiczba + "+" + drugaLiczba + "+" + trzeciaLiczba + "=";
+            rozwiazanie = pierwszaLiczba + drugaLiczba + trzeciaLiczba;
+
+        }
+
+        if(losoweDzialanie1 == 0 && losoweDzialanie2 == 1){
+            dzialanieHTML.textContent = pierwszaLiczba + "+" + drugaLiczba + "-" + trzeciaLiczba + "=";
+            rozwiazanie = pierwszaLiczba + drugaLiczba - trzeciaLiczba;
+
+        }
+
+        if(losoweDzialanie1 == 0 && losoweDzialanie2 == 2){
+            dzialanieHTML.textContent = pierwszaLiczba + "+" + drugaLiczba + "*" + trzeciaLiczba + "=";
+            rozwiazanie = pierwszaLiczba + drugaLiczba * trzeciaLiczba;
+
+        }
+
+        if(losoweDzialanie1 == 0 && losoweDzialanie2 == 3){
+            dzialanieHTML.textContent = pierwszaLiczba + "+" + drugaLiczba + ":" + trzeciaLiczba + "=";
+            rozwiazanie = pierwszaLiczba + Math.floor(drugaLiczba/trzeciaLiczba);
+
+        }
+
+        //1
+
+        if(losoweDzialanie1 == 1 && losoweDzialanie2 == 0){
+            dzialanieHTML.textContent = pierwszaLiczba + "-" + drugaLiczba + "+" + trzeciaLiczba + "=";
+            rozwiazanie = pierwszaLiczba - drugaLiczba + trzeciaLiczba;
+        }
+
+        if(losoweDzialanie1 == 1 && losoweDzialanie2 == 1){
+            dzialanieHTML.textContent = pierwszaLiczba + "-" + drugaLiczba + "-" + trzeciaLiczba + "=";
+            rozwiazanie = pierwszaLiczba - drugaLiczba - trzeciaLiczba;
+        }
+
+
+        if(losoweDzialanie1 == 1 && losoweDzialanie2 == 2){
+            dzialanieHTML.textContent = pierwszaLiczba + "-" + drugaLiczba + "*" + trzeciaLiczba + "=";
+            rozwiazanie = pierwszaLiczba - drugaLiczba * trzeciaLiczba;
+        }
+
+        if(losoweDzialanie1 == 1 && losoweDzialanie2 == 3){
+            dzialanieHTML.textContent = pierwszaLiczba + "-" + drugaLiczba + ":" + trzeciaLiczba + "=";
+            rozwiazanie = pierwszaLiczba - Math.floor(drugaLiczba/trzeciaLiczba);
+        }
+
+        //2
+
+
+
+        
+
+
 
         dzialanieHTML.textContent = losoweDzialanie1 + " " + losoweDzialanie2;
 
