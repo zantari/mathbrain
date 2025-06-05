@@ -167,11 +167,11 @@ else{
     
     <div id="srodek">
         <?php 
-        if(isset($_SESSION['komunikat'])){
+        
 
             echo '<div id="komunikat">
             <h4 id="x" onclick="zamknij()">X</h4>
-            <h3 id="trescKomunikat">'.  $_SESSION['komunikat'] .'</h3>
+            <h3 id="trescKomunikat"></h3>
             <p id="zamknij" onclick="zamknij()">CLOSE</p>
             
             </div>
@@ -179,9 +179,7 @@ else{
 
             ';
                 
-            $_SESSION['komunikat'] = '';
-            unset($_SESSION['komunikat']);
-            }
+            
             
         ?>
 
@@ -218,8 +216,8 @@ else{
                         if (!isset($_SESSION["nazwa"])) {
                             if ($i > 2) {
                                  
-                               $_SESSION['komunikat'] = 'Zaloguj sie aby przechodzic inne poziomy.';
-                                echo "<input class='poziom' type='button' value='" . $row['id_poziom'] . "' ' style='background-color: rgb(214, 132, 94);' onclick='komunikatShow()'>";
+                               
+                                echo "<input class='poziom' type='button' value='" . $row['id_poziom'] . "' ' style='background-color: rgb(214, 132, 94);' onclick='komunikatNoLoggedShow()'>";
                            
                             } else {
                                 echo "<a href='poziomy/" . $row['id_poziom'] . ".php'><input class='poziom' type='button' value='" . $row['id_poziom'] . "'></a>";
@@ -235,8 +233,7 @@ else{
                             }
 
                             if($i > ($daneRow["poziom"]-1)){
-                            $_SESSION['komunikat'] = 'First complete the previous level.';
-                            echo "<input class='poziomNext' type='button' value='" . $row['id_poziom'] . "' ' onclick='komunikatShow()'>";
+                            echo "<input class='poziomNext' type='button' value='" . $row['id_poziom'] . "' ' onclick='komunikatPreviousShow()'>";
                             }
 
                         }
@@ -271,8 +268,7 @@ else{
         }
         else{
             
-            $_SESSION['komunikat'] = 'you need to be logged in to play this mode';
-            echo '<input type="button" class="rankingowy" onclick="komunikatShow()" value="RANKED"></div>';
+            echo '<input type="button" class="rankingowy" onclick="komunikatNoLoggedShow()" value="RANKED"></div>';
 
 
         }

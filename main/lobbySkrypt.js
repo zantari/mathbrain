@@ -5,11 +5,21 @@
 
 
 const komunikat = document.getElementById("komunikat");
+const trescKomunikat = document.getElementById("trescKomunikat")
+
+
 function zamknij(){
     komunikat.style.display='none';
 }
-function komunikatShow(){
+function komunikatNoLoggedShow(){
     komunikat.style.display='block';
+    trescKomunikat.innerText = 'you need to be looged in to play this mode';
+}
+
+
+function komunikatPreviousShow(){
+    komunikat.style.display='block';
+    trescKomunikat.innerText = 'First complete the previous level.';
 }
 
 const twojaOcena = document.getElementById("twojaOcena");
