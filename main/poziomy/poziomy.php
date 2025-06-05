@@ -63,11 +63,11 @@ else{
                 
                 }
                 else{
-                    echo 'Nikt nie przeszedl tego poziomu.';
+                    echo '<li>Nobody has completed this level. </li><br>';
                 }
             ?>
             
-        <li><a href="./../uzytkownicy">Wszyscy uzytkownicy</a></li>
+        <li><a href="./../uzytkownicy">All users</a></li>
             </ol>
         
         <?php

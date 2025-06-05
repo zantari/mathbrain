@@ -1,11 +1,13 @@
 
-const dzialanie = ['dodawanie', 'odejmowanie', 'mnozenie', 'dzielenie'];
+const dzialanie = ['dodawanie', 'odejmowanie', 'mnozenie'];
 const dlugoscTabeli = dzialanie.length;
 const dzialanieHTML = document.getElementById("dzialanie");
 const odpowiedzUzytkownikaHTML = document.getElementById("odpowiedz");
 const czyDobrze = document.getElementById("czyDobrze");
 const timerHTML = document.getElementById("timer");
 const twojePunkty = document.getElementById('twojePunkty');
+
+const losujButton = document.getElementById("losujButton");
 
 let punkt = 0;
 
@@ -37,8 +39,9 @@ function timer() {
         i--;
         timerHTML.textContent = i;
 
-        if (i == 0) {
+        if (i <= 0) {
             alert("przegrales zdobywajac " + punkt + "punktow wow");
+            losujButton.style.display = 'block';
             
             clearInterval(t);
             i = 10;
@@ -51,6 +54,13 @@ function timer() {
     }, 1000);
 }
 
+
+function rownanieUsunButton(){
+    
+    losujButton.style.display = 'none';
+
+    rownanie();
+}
 
 
 
@@ -96,19 +106,7 @@ function rownanie() {
 
         }
 
-        if (losoweDzialanie == 3) {
-            if (pierwszaLiczba > drugaLiczba) {
-
-                dzialanieHTML.textContent = pierwszaLiczba + ":" + drugaLiczba + " (w przyblizeniu) =";
-                rozwiazanie = Math.floor(pierwszaLiczba / drugaLiczba);
-            }
-
-            else {
-                dzialanieHTML.textContent = drugaLiczba + ":" + pierwszaLiczba + "(w przyblizeniu) =";
-                rozwiazanie = Math.floor(drugaLiczba / pierwszaLiczba);
-            }
-
-        }
+        
 
 
 
@@ -193,16 +191,13 @@ function rownanie() {
             rozwiazanie = pierwszaLiczba * drugaLiczba * trzeciaLiczba;
         }
 
-        if (losoweDzialanie1 == 2 && losoweDzialanie2 == 3) {
-            dzialanieHTML.textContent = pierwszaLiczba + "*" + drugaLiczba + ":" + trzeciaLiczba + "(w przyblizeniu) =";
-            rozwiazanie = pierwszaLiczba * Math.floor(drugaLiczba / trzeciaLiczba);
+        else {
+            dzialanieHTML.textContent = pierwszaLiczba + "*" + pierwszaLiczba + " =";
+            rozwiazanie = pierwszaLiczba * pierwszaLiczba;
         }
 
 
-        if (losoweDzialanie1 == 3) {
-            dzialanieHTML.textContent = pierwszaLiczba + "+" + drugaLiczba + "+" + trzeciaLiczba + "(w przyblizeniu) =";
-            rozwiazanie = pierwszaLiczba + drugaLiczba + trzeciaLiczba;
-        }
+        
 
 
 
@@ -261,16 +256,16 @@ function rownanie() {
 
 function sprawdz() {
     if (odpowiedzUzytkownikaHTML.value == rozwiazanie) {
-        czyDobrze.textContent = "DOBRZE";
+        czyDobrze.textContent = "NICE!";
         i = 10;
         rownanie();
         punkt++;
-        twojePunkty.textContent = "TWOJE PUNKTY: " + punkt;
+        twojePunkty.innerHTML = "POINTS: <br>" + punkt;
         odpowiedzUzytkownikaHTML.value ="";
 
     }
     else {
-        czyDobrze.textContent = "ZLE, prawidlowa odp to " + rozwiazanie + ", -2sek";
+        czyDobrze.textContent = "NO! CORRECT ANSWER IS " + rozwiazanie + ", -2sec";
         odpowiedzUzytkownikaHTML.value ="";
         i = i-2;
         rownanie();
