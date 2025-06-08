@@ -38,6 +38,7 @@ body {
 
 
 
+
 #lewodol {
     border-top: 1px dotted black;
     
@@ -67,7 +68,9 @@ body {
     font-size: 60px;
 }
 
-#srodek #dzialanie{
+
+#tresc{
+    text-decoration: none;
     font-size: auto;
     margin: 1%;
 }
@@ -115,39 +118,28 @@ body {
     border-left: 1px dotted black;
     position: absolute;
     top: 78px;
-    right: 0;
     width: 20%;
+    left: 80%;
     height: 100%;
-    
+    overflow: auto;
 }
 
 #prawogora {
-    position: absolute;
-    display: flex;
-    width: 100%;
-    height: 40%;
     text-align: center;
     justify-content: center;
-    align-items: center;
+    width: 100%;
+    height: 50%;
     overflow: auto;
+    display: flex;
+    align-items: center;
 }
 
 #prawodol {
     border-top: 1px dotted black;
-    position: absolute;
-    top: 40%;
-    height: 60%;
+    top: 35%;
+    height: 50%;
     width: 100%;
     text-align: center;
-}
-#prawodol ol{
-    float: left;
-    font-size: 130%;
-    font-family: monospace;
-}
-#prawodol li{
-    
-    float: left;
 }
 
 
@@ -177,12 +169,7 @@ body {
 
 
 
-h3 {
-    position: absolute;
-    left: 10%;
-    font-family: monospace;
-    font-size: 30px;
-}
+
 
 #test {
     position: absolute;
@@ -190,15 +177,9 @@ h3 {
     top: 30%;
 }
 
-#pozycjarankingowa {
-    position: relative;
-    top: 10%;
-    left: 5%;
-    font-family: sans-serif;
-    font-weight: bold;
-}
 
-h4 {
+
+#lewodol h4 {
     position: relative;
     top: -10%;
     font-size: 400%;
@@ -240,7 +221,7 @@ h4 {
 
 
 
-#czydobrze {
+#czyDobrze {
     color: red;
     margin-top: 0;
     font-size: 120%;
@@ -250,4 +231,75 @@ ol{
 }
 li:last-child{
     list-style-type: none;
+}
+
+#komunikat {
+    position: fixed;
+    background-color: rgba(179, 73, 73, 0.98); 
+    color: black;
+    text-align: center;
+    padding: 10px;
+    z-index: 1000;
+    width: 40%;
+    height: 50%;
+    margin-left: 28%;
+    margin-top: 13%;
+   
+    border-radius: 10%;
+    display: none;
+
+
+}
+#komunikat h3{
+    margin-top: 6%;
+    color: black;
+    font-size: 250%;
+
+}
+
+#komunikat p {
+    color: blue;
+    background-color: rgb(206, 86, 86);
+    cursor: pointer;
+    font-size: 170%;
+    border: 2px dotted blue;
+    border-radius: 20px;
+
+}
+#komunikat p:hover {
+    
+    background-color: rgb(108, 108, 190);
+    transition: background-color 2s ease;
+
+}
+#komunikat h4{
+    color: black;
+    margin-left: 90%;
+    margin-top: 2px;
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 10%;
+    background-color: rgb(128, 127, 127, 0.97);
+    font-size: 130%;
+    cursor: pointer;
+}
+#komunikat h4:hover{
+    background-color: rgb(108, 108, 190);
+    transition: background-color 2s ease;
+}
+
+
+
+#pozycjarankingowa {
+    font-weight: bold;
+    float: left;
+    margin: 5px;
+    margin-left: 10px;
+}
+
+#wygrane{
+    color: green;
+}
+#przegrane{
+    color:red;
 }

@@ -30,6 +30,8 @@ body {
    background-color: none;
     z-index: -12;
     font-family: 'Baloo';
+
+     padding: 0 20px;
 }
 
 
@@ -39,5 +41,6 @@ body {
 }
 
 .right {
-  margin-left: auto; 
+  margin-left: auto;
+  margin-right: 120px; 
 }

@@ -1,274 +1,254 @@
 
-const dzialanie = ['dodawanie', 'odejmowanie', 'mnozenie'];
+const dzialanie = ['+', '-', '*'];
 const dlugoscTabeli = dzialanie.length;
-const dzialanieHTML = document.getElementById("dzialanie");
-const odpowiedzUzytkownikaHTML = document.getElementById("odpowiedz");
+
+const tresc = document.getElementById("tresc");
+
+const komunikat = document.getElementById('komunikat');
+
+
+
+
+
 const czyDobrze = document.getElementById("czyDobrze");
+
+
 const timerHTML = document.getElementById("timer");
-const twojePunkty = document.getElementById('twojePunkty');
+
+const startBtn = document.getElementById("start");
+
+
+const twojePunkty = document.getElementById('points');
 
 const losujButton = document.getElementById("losujButton");
 
-let punkt = 0;
 
-let rozwiazanie = null;
+let timer = null;
+let sekundy = 10
+let prawidlowaOdp = null;
+punkty = 0;
 
-function randomLiczba() {
 
-    let losowaLiczba = Math.floor(Math.random() * 10) + 1;
+let punktyRankingowe = 0;
 
-    return losowaLiczba;
+
+function zamknij() {
+    komunikat.style.display = 'none';
+    window.location.reload();
 }
 
-function randomDzialanie() {
+function komunikatShow() {
+    document.getElementById("trescKomunikat").textContent = `You lost with ${punkty} points (${punktyRankingowe}ranked)`;
+    komunikat.style.display = 'block';
 
-
-    let losoweDzialanie = Math.floor(Math.random() * dlugoscTabeli);
-    return losoweDzialanie;
 }
 
 
-let i = 10;
-let t = null;
+function losowaLiczba() {
+    return Math.floor(Math.random() * 10)
+}
 
-function timer() {
-    if (t !== null) {
-        clearInterval(t);
+function losoweDzialanie() {
+    return Math.floor(Math.random() * dzialanie.length)
+}
+function iloscLiczby() {
+    return Math.floor(Math.random() * 2) + 2;
+}
+
+function wykonajDzialanie2Liczb(liczba1, liczba2, zadanie) {
+    if (zadanie == '+') prawidlowaOdp = liczba1 + liczba2;
+    if (zadanie === '-') prawidlowaOdp = liczba1 - liczba2;
+    if (zadanie === '*') prawidlowaOdp = liczba1 * liczba2;
+
+}
+
+function wykonajDzialanie3Liczb(liczba1, liczba2, liczba3, zadanie1, zadanie2) {
+    let wynik;
+
+    if (zadanie1 == '*') {
+        wynik = liczba1 * liczba2;
+
+        if (zadanie2 === '+') wynik = wynik + liczba3;
+        if (zadanie2 === '-') wynik = wynik - liczba3;
+        if (zadanie2 === '*') wynik = wynik * liczba3;
     }
-    t = setInterval(() => {
-        i--;
-        timerHTML.textContent = i;
 
-        if (i <= 0) {
-            alert("przegrales zdobywajac " + punkt + "punktow wow");
-            losujButton.style.display = 'block';
-            
-            clearInterval(t);
-            i = 10;
-            punkt = 0;
-             twojePunkty.textContent = punkt;
-             clearInterval(t);
-        }
+    else {
+        let wynik2;
+
+        if (zadanie2 == '+') wynik2 = liczba2 + liczba3;
+        if (zadanie2 === '-') wynik2 = liczba2 - liczba3;
+        if (zadanie2 === '*') wynik2 = liczba2 * liczba3;
 
 
-    }, 1000);
+        if (zadanie1 === '+') wynik = liczba1 + wynik2;
+        if (zadanie1 === '-') wynik = liczba1 - wynik2;
+    }
+
+    prawidlowaOdp = wynik;
+
 }
 
-
-function rownanieUsunButton(){
-    
-    losujButton.style.display = 'none';
-
-    rownanie();
-}
+function losowanie() {
+    let iloscLiczb = iloscLiczby();
 
 
+    if (iloscLiczb == 2) {
+        let liczba1 = losowaLiczba();
+        let liczba2 = losowaLiczba();
+        let zadanie = dzialanie[losoweDzialanie()];
+        tresc.textContent = `${liczba1} ${zadanie} ${liczba2}`;
 
-function rownanie() {
-    timer();
-
-
-
-    let iloscLiczb = Math.floor(Math.random() * 4) + 2;
-
-
-
-
-
-    if (iloscLiczb === 2) {
-
-        let losoweDzialanie = randomDzialanie();
-        let pierwszaLiczba = randomLiczba();
-        let drugaLiczba = randomLiczba();
-
-
-
-
-
-        if (losoweDzialanie == 0) {
-            dzialanieHTML.textContent = pierwszaLiczba + "+" + drugaLiczba + "=";
-
-            rozwiazanie = pierwszaLiczba + drugaLiczba;
-
-
-
-
-        }
-        if (losoweDzialanie == 1) {
-            dzialanieHTML.textContent = pierwszaLiczba + "-" + drugaLiczba + "=";
-            rozwiazanie = pierwszaLiczba - drugaLiczba;
-
-        }
-        if (losoweDzialanie == 2) {
-
-            dzialanieHTML.textContent = pierwszaLiczba + "*" + drugaLiczba + "=";
-            rozwiazanie = pierwszaLiczba * drugaLiczba;
-
-        }
-
-        
-
-
+        wykonajDzialanie2Liczb(liczba1, liczba2, zadanie);
 
 
     }
 
 
+    if (iloscLiczb == 3) {
+        let liczba1 = losowaLiczba();
+        let liczba2 = losowaLiczba();
+        let liczba3 = losowaLiczba();
+        let zadanie1 = dzialanie[losoweDzialanie()];
+        let zadanie2 = dzialanie[losoweDzialanie()];
+        tresc.textContent = `${liczba1} ${zadanie1} ${liczba2} ${zadanie2} ${liczba3}`;
 
+        wykonajDzialanie3Liczb(liczba1, liczba2, liczba3, zadanie1, zadanie2);
 
-    if (iloscLiczb === 3) {
-        let pierwszaLiczba = randomLiczba();
-        let drugaLiczba = randomLiczba();
-        let trzeciaLiczba = randomLiczba();
-
-        let losoweDzialanie1 = randomDzialanie();
-        let losoweDzialanie2 = randomDzialanie();
-
-        //0
-
-        if (losoweDzialanie1 == 0 && losoweDzialanie2 == 0) {
-            dzialanieHTML.textContent = pierwszaLiczba + "+" + drugaLiczba + "+" + trzeciaLiczba + "=";
-            rozwiazanie = pierwszaLiczba + drugaLiczba + trzeciaLiczba;
-
-        }
-
-        if (losoweDzialanie1 == 0 && losoweDzialanie2 == 1) {
-            dzialanieHTML.textContent = pierwszaLiczba + "+" + drugaLiczba + "-" + trzeciaLiczba + "=";
-            rozwiazanie = pierwszaLiczba + drugaLiczba - trzeciaLiczba;
-
-        }
-
-        if (losoweDzialanie1 == 0 && losoweDzialanie2 == 2) {
-            dzialanieHTML.textContent = pierwszaLiczba + "+" + drugaLiczba + "*" + trzeciaLiczba + "=";
-            rozwiazanie = pierwszaLiczba + drugaLiczba * trzeciaLiczba;
-
-        }
-
-        if (losoweDzialanie1 == 0 && losoweDzialanie2 == 3) {
-            dzialanieHTML.textContent = pierwszaLiczba + "+" + drugaLiczba + ":" + trzeciaLiczba + "(w przyblizeniu) =";
-            rozwiazanie = pierwszaLiczba + Math.floor(drugaLiczba / trzeciaLiczba);
-
-        }
-
-        //1
-
-        if (losoweDzialanie1 == 1 && losoweDzialanie2 == 0) {
-            dzialanieHTML.textContent = pierwszaLiczba + "-" + drugaLiczba + "+" + trzeciaLiczba + "=";
-            rozwiazanie = pierwszaLiczba - drugaLiczba + trzeciaLiczba;
-        }
-
-        if (losoweDzialanie1 == 1 && losoweDzialanie2 == 1) {
-            dzialanieHTML.textContent = pierwszaLiczba + "-" + drugaLiczba + "-" + trzeciaLiczba + "=";
-            rozwiazanie = pierwszaLiczba - drugaLiczba - trzeciaLiczba;
-        }
-
-
-        if (losoweDzialanie1 == 1 && losoweDzialanie2 == 2) {
-            dzialanieHTML.textContent = pierwszaLiczba + "-" + drugaLiczba + "*" + trzeciaLiczba + "=";
-            rozwiazanie = pierwszaLiczba - drugaLiczba * trzeciaLiczba;
-        }
-
-        if (losoweDzialanie1 == 1 && losoweDzialanie2 == 3) {
-            dzialanieHTML.textContent = pierwszaLiczba + "-" + drugaLiczba + ":" + trzeciaLiczba + "(w przyblizeniu) =";
-            rozwiazanie = pierwszaLiczba - Math.floor(drugaLiczba / trzeciaLiczba);
-        }
-
-        //2
-
-        if (losoweDzialanie1 == 2 && losoweDzialanie2 == 0) {
-            dzialanieHTML.textContent = pierwszaLiczba + "*" + drugaLiczba + "+" + trzeciaLiczba + "=";
-            rozwiazanie = pierwszaLiczba * drugaLiczba + trzeciaLiczba;
-        }
-
-        if (losoweDzialanie1 == 2 && losoweDzialanie2 == 1) {
-            dzialanieHTML.textContent = pierwszaLiczba + "*" + drugaLiczba + "-" + trzeciaLiczba + "=";
-            rozwiazanie = pierwszaLiczba * drugaLiczba - trzeciaLiczba;
-        }
-
-
-        if (losoweDzialanie1 == 2 && losoweDzialanie2 == 2) {
-            dzialanieHTML.textContent = pierwszaLiczba + "*" + drugaLiczba + "*" + trzeciaLiczba + "=";
-            rozwiazanie = pierwszaLiczba * drugaLiczba * trzeciaLiczba;
-        }
-
-        else {
-            dzialanieHTML.textContent = pierwszaLiczba + "*" + pierwszaLiczba + " =";
-            rozwiazanie = pierwszaLiczba * pierwszaLiczba;
-        }
-
-
-        
-
-
-
-
-
-
-
-
-    }
-
-
-
-
-
-    if (iloscLiczb === 4) {
-        let pierwszaLiczba = randomLiczba();
-        let drugaLiczba = randomLiczba();
-        let trzeciaLiczba = randomLiczba();
-        let czwartaLiczba = randomLiczba();
-
-        let losoweDzialanie1 = randomDzialanie();
-
-        if (losoweDzialanie1 == 0) {
-            dzialanieHTML.textContent = pierwszaLiczba + "+" + drugaLiczba + "+" + trzeciaLiczba + "+" + czwartaLiczba;
-            rozwiazanie = pierwszaLiczba + drugaLiczba + trzeciaLiczba + czwartaLiczba;
-        }
-
-        else if (losoweDzialanie1 == 1) {
-            dzialanieHTML.textContent = pierwszaLiczba + "+" + drugaLiczba + "-" + trzeciaLiczba + "*" + czwartaLiczba;
-            rozwiazanie = pierwszaLiczba + drugaLiczba - trzeciaLiczba * czwartaLiczba;
-
-        }
-
-        else if (losoweDzialanie1 == 2) {
-            dzialanieHTML.textContent = pierwszaLiczba + "*" + drugaLiczba + "-" + trzeciaLiczba + "+" + czwartaLiczba;
-            rozwiazanie = pierwszaLiczba * drugaLiczba - trzeciaLiczba + czwartaLiczba;
-
-        }
-
-        else if (losoweDzialanie1 == 3) {
-            dzialanieHTML.textContent = pierwszaLiczba + "+" + drugaLiczba + "*" + trzeciaLiczba + "+" + czwartaLiczba;
-            rozwiazanie = pierwszaLiczba + drugaLiczba * trzeciaLiczba + czwartaLiczba;
-
-        }
-
-        else {
-            dzialanieHTML.textContent = pierwszaLiczba + "*" + drugaLiczba + "-" + trzeciaLiczba + "-" + czwartaLiczba;
-            rozwiazanie = pierwszaLiczba * drugaLiczba - trzeciaLiczba - czwartaLiczba;
-        }
-
-    }
-
-
-}
-
-
-function sprawdz() {
-    if (odpowiedzUzytkownikaHTML.value == rozwiazanie) {
-        czyDobrze.textContent = "NICE!";
-        i = 10;
-        rownanie();
-        punkt++;
-        twojePunkty.innerHTML = "POINTS: <br>" + punkt;
-        odpowiedzUzytkownikaHTML.value ="";
 
     }
     else {
-        czyDobrze.textContent = "NO! CORRECT ANSWER IS " + rozwiazanie + ", -2sec";
-        odpowiedzUzytkownikaHTML.value ="";
-        i = i-2;
-        rownanie();
+        iloscLiczb = 2;
+    }
+
+
+
+
+
+
+}
+
+function sprawdzOdp() {
+
+
+    let odpowiedzUzytkownika = document.getElementById("odpowiedz").value;
+    if (odpowiedzUzytkownika == prawidlowaOdp) {
+        clearInterval(timer)
+
+        timer = null;
+        sekundy = 10;
+        timerHTML.textContent = 10;
+        timerfunkcja()
+        punkty++;
+        twojePunkty.textContent = punkty
+
+        setTimeout(() => {
+            document.getElementById("odpowiedz").value = '';
+            console.log('loadnig');
+            losowanie();
+        }, 200);
+
+    }
+    else {
+
+        czyDobrze.textContent = "WRONG ANSWER ";
+
+        setTimeout(() => {
+
+            czyDobrze.textContent = ''
+        }, 3000);
     }
 
 }
+
+function gra() {
+    startBtn.onclick = check;
+    timerfunkcja();
+    losowanie();
+}
+
+function check() {
+    timerfunkcja();
+    sprawdzOdp();
+
+}
+
+
+function timerfunkcja() {
+    if (timerHTML.style.color === 'red') {
+        timerHTML.style.color = "#6ab1ff";
+        timerHTML.textContent = 10;
+    }
+
+    if (startBtn.textContent != 'CHECK!') {
+        startBtn.textContent = 'CHECK!'
+
+
+    }
+
+
+
+    if (timer == null) {
+        timer = setInterval(() => {
+            if (sekundy > 0) {
+                sekundy--;
+                timerHTML.textContent = sekundy;
+            }
+            else {
+                timerHTML.style.color = 'red';
+                timerHTML.textContent = 'you lost :(';
+                
+                clearInterval(timer);
+                sekundy = 10;
+                timer = null;
+
+                if(punkty<5){
+                    punktyRankingowe-=3;
+                }
+
+                else if(punkty == 5){
+                    punktyRankingowe+=0
+                }
+                else if(punkty>5 && punkty<10){
+                    punktyRankingowe+=3
+                    
+                }
+
+                else if(punkty>=10){
+                    punktyRankingowe+=10;
+                }
+
+
+                komunikatShow()
+                sendRankingPoints();
+            }
+
+
+        }, 1000);
+    }
+
+
+    function sendRankingPoints() {
+    fetch('sendranked.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ punktyRankingowe: punktyRankingowe })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        console.error('blad ', error);
+    });
+}
+
+
+
+
+
+
+}
+

@@ -8,7 +8,7 @@
    
 <body>
     <div id="stopka">
-       <span class="left">©2025 </span> MATH BRAIN 0.5 <span class="right">strone wykonal piotrek</span>
+       <span class="left">©2025 </span> MATH BRAIN 1.0 <span class="right">made by zantar :):</span>
     </div>
 </body>
 </html>
