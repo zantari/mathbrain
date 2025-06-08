@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REJESTRACJA</title>
+    <title>REGISTER</title>
     <link rel="stylesheet" href="rejestracja.css">
 </head>
 <body>

@@ -47,7 +47,7 @@ if (!isset($_SESSION["tel"]) || empty($_SESSION["tel"])) {
     echo '
     <div id="dane">
         <div id="informacje">
-            <p id="nazwa"><i>brak konta</i><br>*twój ranking*</p>
+            <p id="nazwa"><i>no account</i><br>*ranking*</p>
         </div>
         <img id="profilowe" src="/mathbrain/inc/awatary/dziura.png">
     </div>
