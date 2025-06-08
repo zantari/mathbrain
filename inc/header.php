@@ -16,11 +16,19 @@ session_start();
 <body>
 <header id="banner">
 
-<a href="/mathbrain/main/lobby.php"><img src="/mathbrain/inc/logo3.png" alt="Logo Math brain"></a>
+<a href="/mathbrain/main/lobby.php"><img src="/mathbrain/inc/logo3.png" alt="Logo"></a>
 
 <ul id="listaHeader">
     <li><a href="/mathbrain/main/uzytkownicy">RANKING</a></li>
-    <li><a href="/mathbrain/main/ranked/ranked.php">RANKED</a></li>
+    <li><?php
+    if (!isset($_SESSION['tel']) || empty($_SESSION['tel'])) {
+        echo '<a>RANKED</a></li>';
+    }
+    else{
+        echo '<a href="/mathbrain/main/ranked/ranked.php">RANKED</a></li>';
+    }
+    
+    ?>
     <li><a href="/mathbrain/main/lobby.php">LEVELS</a></li>
     <?php
     if (!isset($_SESSION['tel']) || empty($_SESSION['tel'])) {

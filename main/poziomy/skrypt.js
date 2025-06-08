@@ -83,7 +83,7 @@ function sprawdzOdp() {
     let zad = 10 + 10;
 
     if (odp === zad) {
-        document.getElementById("czydobrze").innerText = "dobrze";
+        document.getElementById("czydobrze").innerText = "super!";
         aktualizujPoziom(); 
          czasDoBazy()
 
@@ -100,7 +100,7 @@ function sprawdzOdpBez(){
     let zad = 10 + 10;
 
     if (odp === zad) {
-        document.getElementById("czydobrze").innerText = "dobrze";
+        document.getElementById("czydobrze").innerText = "super!";
         window.location.href = "../../index.php";
 
     } else {
@@ -131,7 +131,7 @@ function sprawdzOdp2() {
     let zad = 5 * 5;
 
     if (odp === zad) {
-        document.getElementById("czydobrze").innerText = "dobrze";
+        document.getElementById("czydobrze").innerText = "super!";
         aktualizujPoziom();
          czasDoBazy();
     } else {
@@ -147,7 +147,7 @@ function sprawdzOdpBez2(){
     let zad = 5 * 5;
 
     if (odp === zad) {
-        document.getElementById("czydobrze").innerText = "dobrze";
+        document.getElementById("czydobrze").innerText = "super!";
         window.location.href = "../../index.php";
 
     } else {
@@ -168,7 +168,7 @@ function sprawdzOdp3() {
     let zad = 16;
 
     if (odp === zad) {
-        document.getElementById("czydobrze").innerText = "dobrze";
+        document.getElementById("czydobrze").innerText = "super!";
         aktualizujPoziom();
          czasDoBazy();
     } else {
@@ -184,7 +184,7 @@ function sprawdzOdpBez3(){
     let zad = 16;
 
     if (odp === zad) {
-        document.getElementById("czydobrze").innerText = "dobrze";
+        document.getElementById("czydobrze").innerText = "super!";
         window.location.href = "../../index.php";
 
     } else {
@@ -205,7 +205,7 @@ function sprawdzOdp4() {
     let zad = 16;
 
    if (odp === zad) {
-        document.getElementById("czydobrze").innerText = "dobrze";
+        document.getElementById("czydobrze").innerText = "super!";
         aktualizujPoziom();
          czasDoBazy();
     } else {
@@ -221,7 +221,7 @@ function sprawdzOdpBez4(){
     let zad = 16;
 
     if (odp === zad) {
-        document.getElementById("czydobrze").innerText = "dobrze";
+        document.getElementById("czydobrze").innerText = "super!";
         window.location.href = "../../index.php";
 
     } else {
@@ -251,7 +251,7 @@ function sprawdzOdp5() {
     let zad = 40;
 
     if (odp === zad) {
-        document.getElementById("czydobrze").innerText = "dobrze";
+        document.getElementById("czydobrze").innerText = "super!";
         aktualizujPoziom();
          czasDoBazy();
     } else {
@@ -267,7 +267,7 @@ function sprawdzOdpBez5(){
     let zad = 40;
 
     if (odp === zad) {
-        document.getElementById("czydobrze").innerText = "dobrze";
+        document.getElementById("czydobrze").innerText = "super!";
         window.location.href = "../../index.php";
 
     } else {
@@ -287,7 +287,7 @@ function sprawdzOdp6() {
     let zad = 26;
 
     if (odp === zad) {
-        document.getElementById("czydobrze").innerText = "dobrze";
+        document.getElementById("czydobrze").innerText = "super!";
         aktualizujPoziom();
          czasDoBazy();
     } else {
@@ -303,7 +303,7 @@ function sprawdzOdpBez6(){
     let zad = 26;
 
     if (odp === zad) {
-        document.getElementById("czydobrze").innerText = "dobrze";
+        document.getElementById("czydobrze").innerText = "super!";
         window.location.href = "../../index.php";
 
     } else {
@@ -325,7 +325,7 @@ function sprawdzOdp7() {
     let zad = 35;
 
     if (odp === zad) {
-        document.getElementById("czydobrze").innerText = "dobrze";
+        document.getElementById("czydobrze").innerText = "super!";
         aktualizujPoziom();
          czasDoBazy();
     } else {
@@ -341,7 +341,7 @@ function sprawdzOdpBez7(){
     let zad = 35;
 
     if (odp === zad) {
-        document.getElementById("czydobrze").innerText = "dobrze";
+        document.getElementById("czydobrze").innerText = "super!";
         window.location.href = "../../index.php";
 
     } else {
@@ -361,7 +361,7 @@ function sprawdzOdp8() {
     let zad = 7;
 
     if (odp === zad) {
-        document.getElementById("czydobrze").innerText = "dobrze";
+        document.getElementById("czydobrze").innerText = "super!";
         aktualizujPoziom();
          czasDoBazy();
     } else {
@@ -377,7 +377,7 @@ function sprawdzOdpBez8(){
     let zad = 7;
 
     if (odp === zad) {
-        document.getElementById("czydobrze").innerText = "dobrze";
+        document.getElementById("czydobrze").innerText = "super!";
         window.location.href = "../../index.php";
 
         console.log('prawidlowa odp to: ' + answer);
@@ -400,7 +400,7 @@ function sprawdzOdp9() {
     let zad = 21;
 
     if (odp === zad) {
-        document.getElementById("czydobrze").innerText = "dobrze";
+        document.getElementById("czydobrze").innerText = "super!";
         
          czasDoBazy();
         aktualizujPoziom();
@@ -417,7 +417,7 @@ function sprawdzOdpBez9(){
     let zad = 21;
 
     if (odp === zad) {
-        document.getElementById("czydobrze").innerText = "dobrze";
+        document.getElementById("czydobrze").innerText = "super!";
         window.location.href = "../../index.php";
 
     } else {
