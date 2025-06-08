@@ -20,7 +20,7 @@ session_start();
 
 <ul id="listaHeader">
     <li><a href="/mathbrain/main/uzytkownicy">RANKING</a></li>
-    <li><a href="/mathbrain/main/ranked">RANKED</a></li>
+    <li><a href="/mathbrain/main/ranked/ranked.php">RANKED</a></li>
     <li><a href="/mathbrain/main/lobby.php">LEVELS</a></li>
     <?php
     if (!isset($_SESSION['tel']) || empty($_SESSION['tel'])) {
